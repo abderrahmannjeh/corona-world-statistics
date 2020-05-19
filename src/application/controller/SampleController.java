@@ -102,7 +102,11 @@ public class SampleController {
 	@FXML
 	void getData(javafx.event.ActionEvent event) throws ParserConfigurationException, SAXException, ParseException {
 		try {
-			
+			//Data link used : https://opendata.ecdc.europa.eu/covid19/casedistribution/xml/
+			if(url.getText() != null  && url.getText().length()>0)
+			p = new Parser(url.getText());
+			else
+				p=new Parser("https://opendata.ecdc.europa.eu/covid19/casedistribution/xml/");
 			p = new Parser(url.getText());
 			list.clear();
 			list.addAll(p.readFile());
